@@ -51,13 +51,13 @@
 /* FONTS */
 @font-face {
   font-family: 'lilita-one';
-  src: url('../assets/fonts/LilitaOne-Regular.ttf') format('truetype');
+  src: url('../assets/fonts/LilitaOne-Regular.woff2') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'lilita-one-bold';
-  src: url('../assets/fonts/LilitaOne-Regular.ttf') format('truetype');
+  src: url('../assets/fonts/LilitaOne-Regular.woff2') format('truetype');
   font-weight: bold;
   font-style: normal;
 }

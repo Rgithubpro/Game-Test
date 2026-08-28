@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Test</title>
-    <link rel="icon" type="image/x-icon" href="assets/logos/Apex-Arena/logo.png">
+    <title>Apex-Arena</title>
+    <meta name="description" content="Play Apex-Arena now!">
+    <meta name="author" content="Ralph Broekaart">
+    <link rel="icon" type="icon" href="assets/logos/apex-arena.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -16,14 +18,17 @@
     <script src="js/pages/loading.js"></script>
     <script src="js/pages/welcome.js"></script>
     <script src="js/pages/home.js"></script>
+
+    <!-- Helper Scripts -->
+    
   
     <div class="page-container">
 <!-- ================================================================
   LOADING  →  #loading
 ================================================================= -->
         <div id="loading-screen" class="page">
-            <img src="https://figpdkdjdbhnsfilwxae.supabase.co/storage/v1/object/public/backgrounds/loading.png" onerror="this.onerror=null; this.src='assets/images/backgrounds/loading-screen-no-wifi.png';" alt="" id="loading-screen-image">
-            <img src="assets/logos/Apex-Arena/logo.png" alt="Logo" id="loading-screen-logo">
+            <img data-asset="assets/backgrounds/loading.png" src="assets/backgrounds/loading-screen-backup.png" alt="" id="loading-screen-image">
+            <img src="assets/logos/apex-arena.png" alt="Logo" id="loading-screen-logo">
             <div id="loading-screen-content">
                 <h1 id="loading-screen-title">Loading</h1>
                 <h3 id="loading-screen-detail">Starting application</h3>
@@ -45,31 +50,32 @@
 WELCOME  →  #welcome
 ================================================================ -->
         <div id="welcome-screen" class="page">
+            <canvas id="networkCanvas"></canvas>
             <div id="welcome-screen-log-in">
-                <h1 id="welcome-screen-titel">Welcome to Apex-Arena</h1>
+                <h1 id="welcome-screen-title">Welcome to Apex-Arena</h1>
                 <h4 id="welcome-screen-subtitle">Choose how to log in</h4>
                 <p id="welcome-screen-subsubtitle">This way your data can be saved and accessed across devices</p>
                 <div id="welcome-screen-login-options">
                     <button class="welcome-screen-login-option" id="welcome-screen-login-option-google">
-                        <img src="assets/logos/Google/logo.png" alt="Google logo" class="welcome-screen-login-option-icon" id="welcome-screen-login-option-icon-google">
+                        <img data-asset="assets/logos/logo-google.png" alt="Google logo" class="welcome-screen-login-option-icon" id="welcome-screen-login-option-icon-google">
                         <p id="welcome-screen-login-option-text-google">Continue with Google</p>
                     </button>
                     <button class="welcome-screen-login-option" id="welcome-screen-login-option-microsoft">
-                        <img src="assets/logos/Microsoft/logo.png" alt="Microsoft logo" class="welcome-screen-login-option-icon" id="welcome-screen-login-option-icon-microsoft">
+                        <img data-asset="assets/logos/logo-microsoft.png" alt="Microsoft logo" class="welcome-screen-login-option-icon" id="welcome-screen-login-option-icon-microsoft">
                         <p id="welcome-screen-login-option-text-microsoft">Continue with Microsoft</p>
                     </button>
                     <button class="welcome-screen-login-option" id="welcome-screen-login-option-apple">
-                        <img src="assets/logos/Apple/logo.png" alt="Apple logo" class="welcome-screen-login-option-icon" id="welcome-screen-login-option-icon-apple">
+                        <img data-asset="assets/logos/logo-apple.png" alt="Apple logo" class="welcome-screen-login-option-icon" id="welcome-screen-login-option-icon-apple">
                         <p id="welcome-screen-login-option-text-apple">Continue with Apple</p>
                     </button>
                     <button class="welcome-screen-login-option" id="welcome-screen-login-option-email">
-                        <img src="assets/logos/E-mail/logo.png" alt="E-mail" class="welcome-screen-login-option-icon" id="welcome-screen-login-option-icon-email">
+                        <img data-asset="assets/logos/logo-mail.png" alt="E-mail" class="welcome-screen-login-option-icon" id="welcome-screen-login-option-icon-email">
                         <p id="welcome-screen-login-option-text-email">Continue with E-mail</p>
                     </button>
                 </div>
                 <!-- Login as guest-->
                 <button id="welcome-screen-guest-button">
-                    <img src="assets/logos/Guest/logo.png" alt="Guest logo" id="welcome-screen-guest-button-icon">
+                    <img data-asset="assets/logos/logo-guests.png" alt="Guest logo" id="welcome-screen-guest-button-icon">
                     <p id="welcome-screen-guest-button-text">Or continue as Guest</p>
                     <p id="welcome-screen-guest-button-disclaimer">Your data will not be saved and you play offline</p>
                 </button>
@@ -82,7 +88,7 @@ WELCOME  →  #welcome
                     <form id="welcome-screen-email-login-form">
                         <input type="email" id="welcome-screen-email-login-email" placeholder="E-mail address" required>
                         <input type="password" id="welcome-screen-email-login-password" placeholder="Password" required>
-                        <button type="button" id="welcome-screen-email-login-show-password"><img src="assets/images/icons/show-password.png" alt="Show password" id="welcome-screen-email-login-show-password-icon"></button>
+                        <button type="button" id="welcome-screen-email-login-show-password"><img data-asset="assets/icons/general/show-password.png" alt="Show password" id="welcome-screen-email-login-show-password-icon"></button>
                         <button type="submit" id="welcome-screen-email-login-button">Log In</button>
                         <a href="#forgot-password" id="welcome-screen-email-login-forgot">Forgot password?</a> <!-- Link to forgot password page DON'T FORGET TO LINK!-->
                     </form>
@@ -94,9 +100,9 @@ WELCOME  →  #welcome
                         <input type="text" id="welcome-screen-email-signup-username" placeholder="Username" required>
                         <input type="email" id="welcome-screen-email-signup-email" placeholder="E-mail address" required>
                         <input type="password" id="welcome-screen-email-signup-password" placeholder="Password" required>
-                        <button type="button" id="welcome-screen-email-signup-show-password"><img src="assets/images/icons/show-password.png" alt="Show password" id="welcome-screen-email-login-show-password-icon"></button>
+                        <button type="button" id="welcome-screen-email-signup-show-password"><img data-asset="assets/icons/general/show-password.png" alt="Show password" id="welcome-screen-email-login-show-password-icon"></button>
                         <input type="password" id="welcome-screen-email-signup-confirm-password" placeholder="Confirm Password" required>
-                        <button type="button" id="welcome-screen-email-signup-show-password-confirm"><img src="assets/images/icons/show-password.png" alt="Show password" id="welcome-screen-email-signup-show-password-icon"></button>
+                        <button type="button" id="welcome-screen-email-signup-show-password-confirm"><img data-asset="assets/icons/general/show-password.png" alt="Show password" id="welcome-screen-email-signup-show-password-icon"></button>
                         <button type="submit" id="welcome-screen-email-signup-button">Sign Up</button>
                     </form>
                 </div>
@@ -106,7 +112,7 @@ WELCOME  →  #welcome
             <div id="welcome-screen-disclaimer">
                 <h1 id="welcome-screen-disclaimer-title">Welcome to Apex-Arena!</h1>
                 <h2 id="welcome-screen-disclaimer-subtitle">We hope you have a great time!</h2> <!-- Edit href below this!!-->
-                <p id="welcome-screen-disclaimer-txt">But first you have to agree to our <a href="#terms-of-service" id="welcome-screen-terms-link">Terms of Service</a> and <a href="#privacy-policy" id="welcome-screen-privacy-link">Privacy Policy</a>.</p>
+                <p id="welcome-screen-disclaimer-txt">But first you have to agree to our <a href="#terms-of-service" id="welcome-screen-terms-link">Terms of Service</a> and <a href="#privacy-policy" id="welcome-screen-privacy-link">Privacy Policy</a>.</p> <!-- ALERT! REMOVE HREF AND REPLACE BY ROUTER.Go() ALSO AT COOKIES BELOW HERE-->
                 <input type="checkbox" id="welcome-screen-disclaimer-accept">
                 <label for="welcome-screen-disclaimer-accept">I agree to the Terms of Service and Privacy Policy</label>
                 <button id="welcome-screen-disclaimer-button">Start Playing</button>
@@ -129,23 +135,23 @@ WELCOME  →  #welcome
 HOME  →  #home
 ================================================================= -->
         <div id="home-screen" class="page">
-            <img src="https://figpdkdjdbhnsfilwxae.supabase.co/storage/v1/object/public/backgrounds/background.png" alt="Home screen background" id="home-screen-background">
+            <img data-asset="assets/backgrounds/background.png" alt="Home screen background" id="home-screen-background">
             <!-- Top -->
             <div id="home-screen-top">
                 <button id="home-screen-profile">
-                    <img src="https://figpdkdjdbhnsfilwxae.supabase.co/storage/v1/object/public/profile-pictures/abstract-002.png" alt="Profile picture" id="home-screen-profile-picture">
+                    <img data-asset="assets/icons/profile-pictures/abstract-002.svg" alt="Profile picture" id="home-screen-profile-picture">
                     <p id="home-screen-profile-username">{username}</p>
                 </button>
                 <button id="home-screen-trophieroad">
                     <div id="home-screen-trophieroad-count-box">
                         <p id="home-screen-trophieroad-count">91021</p>
-                        <img src="assets/images/home-screen/icons/trophy.png" alt="" id="home-screen-trophieroad-count-trophie">
+                        <img data-asset="assets/icons/general/trophy.png" alt="" id="home-screen-trophieroad-count-trophie">
                     </div>
                     <div id="home-screen-trophieroad-progressbar">
                         <div id="home-screen-trophieroad-progressbar-fill"></div>
                     </div>
-                    <img src="assets/images/home-screen/dynamic/rewards/coins.png" alt="Next reward = {reward}" id="home-screen-trophieroad-next-reward">
-                    <img src="https://figpdkdjdbhnsfilwxae.supabase.co/storage/v1/object/public/rank-images/trophieroad/Rank5.png" alt="Rank: {rank}" id="home-screen-trophieroad-rank">
+                    <img data-asset="assets/icons/general/coins.png" alt="Next reward = {reward}" id="home-screen-trophieroad-next-reward">
+                    <img data-asset="assets/icons/ranks/trophyroad/rank5.png" alt="Rank: {rank}" id="home-screen-trophieroad-rank">
                     <div id="home-screen-trophieroad-rank-substage">
                         <p id="home-screen-trophieroad-rank-substage-text">III</p>
                     </div>
@@ -153,43 +159,43 @@ HOME  →  #home
                 <div id="home-screen-currencies">
                     <button id="home-screen-currencies-gems">
                         <p id="home-screen-currencies-gems-count">134</p>
-                        <img src="assets/images/home-screen/icons/gems.png" alt="Gems" id="home-screen-currencies-gems-icon">
+                        <img data-asset="assets/icons/general/gems.png" alt="Gems" id="home-screen-currencies-gems-icon">
                     </button>
                     <button id="home-screen-currencies-coins">
                         <p id="home-screen-currencies-coins-count">5291</p>
-                        <img src="assets/images/home-screen/icons/coins.png" alt="Coins" id="home-screen-currencies-coins-icon">
+                        <img data-asset="assets/icons/general/coins.png" alt="Coins" id="home-screen-currencies-coins-icon">
                     </button>
                     <button id="home-screen-currencies-powerpoints">
                         <p id="home-screen-currencies-powerpoints-count">9821</p>
-                        <img src="assets/images/home-screen/icons/powerpoints.png" alt="Powerpoints" id="home-screen-currencies-powerpoints-icon">
+                        <img data-asset="assets/icons/general/powerpoints.png" alt="Powerpoints" id="home-screen-currencies-powerpoints-icon">
                     </button>
                     <button id="home-screen-currencies-crystals">
                         <p id="home-screen-currencies-crystals-count">29512</p>
-                        <img src="assets/images/home-screen/icons/crystal.png" alt="Crystals" id="home-screen-currencies-crystals-icon">
+                        <img data-asset="assets/icons/general/crystals.png" alt="Crystals" id="home-screen-currencies-crystals-icon">
                     </button>
                 </div>
                 <button id="home-screen-settings">
-                    <img src="assets/images/home-screen/icons/settings.png" alt="" id="home-screen-settings-icon">
+                    <img data-asset="assets/icons/general/settings.png" alt="" id="home-screen-settings-icon">
                 </button>
             </div>
             <!-- Left side -->
             <div id="home-screen-left">
                 <button id="home-screen-shop">
-                    <img src="assets/images/home-screen/icons/shop.png" alt="" id="home-screen-shop-icon">
+                    <img data-asset="assets/icons/general/shop.png" alt="" id="home-screen-shop-icon">
                     <p id="home-screen-shop-text">Shop</p>
                     <div id="home-screen-shop-flag">
                         <p id="home-screen-shop-flag-text">Free</p>
                     </div>
                 </button>
                 <button id="home-screen-battlers">
-                    <img src="assets/images/home-screen/icons/battlers.png" alt="" id="home-screen-battlers-icon">
+                    <img data-asset="assets/icons/general/battlers.png" alt="" id="home-screen-battlers-icon">
                     <p id="home-screen-battlers-text">Battlers</p>
                     <div id="home-screen-battlers-notification">
                         <p id="home-screen-battlers-notification-text">20</p>
                     </div>
                 </button>
                 <button id="home-screen-unlock-brawler">
-                    <img src="assets/images/home-screen/icons/placeholder.png" alt="" id="home-screen-unlock-brawler-icon">
+                    <img data-asset="assets/icons/general/placeholder.png" alt="" id="home-screen-unlock-brawler-icon">
                     <div id="home-screen-unlock-brawler-bar">
                         <div id="home-screen-unlock-brawler-bar-fill"></div>
                         <p id="home-screen-unlock-brawler-text">1810/3800</p>
@@ -199,88 +205,88 @@ HOME  →  #home
             <!-- Right side -->
             <div id="home-screen-right">
                 <button id="home-screen-news">
-                    <img src="assets/images/home-screen/icons/news.png" alt="" id="home-screen-news-icon">
+                    <img data-asset="assets/icons/general/news.png" alt="" id="home-screen-news-icon">
                     <p id="home-screen-news-text">News</p>
                     <div id="home-screen-news-flag">
                         <p id="home-screen-news-flag-text">New</p>
                     </div>
                 </button>
                 <button id="home-screen-friends">
-                    <img src="assets/images/home-screen/icons/friends.png" alt="" id="home-screen-friends-icon">
+                    <img data-asset="assets/icons/general/friends.png" alt="" id="home-screen-friends-icon">
                     <p id="home-screen-friends-text">Friends</p>
                     <div id="home-screen-friends-notification">
                         <p id="home-screen-friends-notification-text">5</p>
                     </div>
                 </button>
                 <button id="home-screen-club">
-                    <img src="assets/images/home-screen/dynamic/clubs/club-blue.png" alt="" id="home-screen-club-icon">
+                    <img data-asset="assets/icons/general/club-white.png" alt="" id="home-screen-club-icon">
                     <p id="home-screen-club-text">Clubs</p>
                     <div id="home-screen-club-notification">
                         <p id="home-screen-club-notification-text">2</p>
                     </div>
                 </button>
                 <button id="home-screen-team/chat">
-                    <img src="assets/images/home-screen/icons/teamup.png" alt="" id="home-screen-team/chat-icon"> <!-- can change to chat icon-->
+                    <img data-asset="assets/icons/general/teamup.png" alt="" id="home-screen-team-chat-icon"> <!-- can change to chat icon-->
                     <p id="home-screen-team/chat-text">Team up!</p> <!-- can change to Chat-->
                 </button>
             </div>
             <!-- Center -->
             <div id="home-screen-center">
                 <div id="home-screen-battler-trophies"> <!-- no button cause you can't click on it -->
-                    <img src="https://figpdkdjdbhnsfilwxae.supabase.co/storage/v1/object/public/rank-images/Battlers/Rank4.png" alt="" id="home-screen-battler-trophies-rank-icon">
+                    <img data-asset="assets/icons/ranks/battler/rank4.png" alt="" id="home-screen-battler-trophies-rank-icon">
                     <p id="home-screen-battler-trophies-rank-text">II</p>
                     <div id="home-screen-battler-trophies-progressbar">
                         <div id="home-screen-battler-trophies-progressbar-fill"></div>
                         <p id="home-screen-battler-trophies-progressbar-text">920</p>
-                        <img src="assets/images/home-screen/icons/trophy.png" alt="" id="home-screen-battler-trophies-progressbar-trophie">
+                        <img data-asset="assets/icons/general/trophy.png" alt="" id="home-screen-battler-trophies-progressbar-trophie">
                     </div>
                 </div>
                 <button id="home-screen-battler-power-level">
-                    <img src="assets/images/home-screen/icons/power-flame.png" alt="" id="home-screen-battler-power-level-ultra-icon">
+                    <img data-asset="assets/icons/general/power-flame.png" alt="" id="home-screen-battler-power-level-ultra-icon">
                     <p id="home-screen-battler-power-level-text">9</p>
                 </button>
                 <button id="home-screen-battler-upgrades">
-                    <img src="assets/images/home-screen/icons/placeholder.png" alt="" id="home-screen-battler-upgrades-gear1">
-                    <img src="assets/images/home-screen/icons/placeholder.png" alt="" id="home-screen-battler-upgrades-gear2">
-                    <img src="assets/images/home-screen/icons/placeholder.png" alt="" id="home-screen-battler-upgrades-gadget">
-                    <img src="assets/images/home-screen/icons/placeholder.png" alt="" id="home-screen-battler-upgrades-starpower">
+                    <img data-asset="assets/icons/general/placeholder.png" alt="" id="home-screen-battler-upgrades-gear1">
+                    <img data-asset="assets/icons/general/placeholder.png" alt="" id="home-screen-battler-upgrades-gear2">
+                    <img data-asset="assets/icons/general/placeholder.png" alt="" id="home-screen-battler-upgrades-gadget">
+                    <img data-asset="assets/icons/general/placeholder.png" alt="" id="home-screen-battler-upgrades-starpower">
                 </button>
                 <button id="home-screen-battler-skins">
-                    <img src="assets/images/home-screen/icons/hanger.png" alt="" id="home-screen-battler-skins-icon">
+                    <img data-asset="assets/icons/general/hanger.png" alt="" id="home-screen-battler-skins-icon">
                 </button>
                 <div id="home-screen-battler-render">
-                    <canvas id="home-screen-battler-render-canvas"></canvas>
+                        <canvas id="home-screen-battler-render-canvas"></canvas>
                 </div>
             </div>
             <!-- Bottom-->
             <div id="home-screen-bottom">
                 <button id="home-screen-battlepass">
-                    <img src="assets/images/home-screen/dynamic/battlepass/normal.png" alt="" id="home-screen-battlepass-icon">
+                    <img data-asset="assets/icons/general/battlepass-normal.png" alt="" id="home-screen-battlepass-icon">
                     <div id="home-screen-battlepass-progressbar">
                         <div id="home-screen-battlepass-progressbar-fill"></div>
                         <p id="home-screen-battlepass-progressbar-text">421/950</p>
                     </div>
-                    <img src="assets/images/home-screen/icons/battler-xp.png" alt="" id="home-screen-battlepass-progressbar-icon">
-                    <img src="assets/images/home-screen/dynamic/rewards/stardrop.png" alt="Next reward = {reward}" id="home-screen-battlepass-next-reward">
+                        <img data-asset="assets/icons/general/battler-xp.png" alt="" id="home-screen-battlepass-progressbar-icon">
+                        <img data-asset="assets/icons/general/stardrop.png" alt="Next reward = {reward}" id="home-screen-battlepass-next-reward">
                 </button>
                 <button id="home-screen-quests">
-                    <img src="assets/images/home-screen/icons/quests.png" alt="" id="home-screen-quests-icon">
+                    <img data-asset="assets/icons/general/quests.png" alt="" id="home-screen-quests-icon">
                     <p id="home-screen-quests-text">Quests</p>
                     <div id="home-screen-quests-flag">
                         <p id="home-screen-quests-flag-text">New</p>
                     </div>
                 </button>
                 <button id="home-screen-streak">
-                    <img src="assets/images/home-screen/icons/flame1.png" alt="" id="home-screen-streak-icon">
+                    <img data-asset="assets/icons/general/flame1.png" alt="" id="home-screen-streak-icon">
                     <p id="home-screen-streak-text">5</p>
                 </button>
                 <button id="home-screen-event">
                     <p id="home-screen-event-new-event-in">New event in: 2h 30m</p>
-                    <img src="assets/images/home-screen/icons/info.png" alt="" id="home-screen-event-info">
+                    <img data-asset="assets/icons/general/info.png" alt="" id="home-screen-event-info">
                     <div id="home-screen-event-box">
                         <h6 id="home-screen-event-box-gamemode">Football</h6>
                         <p id="home-screen-event-box-map-name">Beach</p>
-                        <img src="assets/images/maps/football/icon.png" alt="" id="home-screen-event-box-mode-image">
+                        <img data-asset="assets/maps/football.png" alt="" id="home-screen-event-box-mode-image">
                         <div id="home-screen-event-new">
                             <p id="home-screen-event-new-text">NEW EVENTS!</p>
                         </div>
@@ -297,14 +303,14 @@ HOME  →  #home
                         <div class="home-screen-play-rewards-bar-segment" id="home-screen-play-rewards-bar-segment5"></div>
                         <div class="home-screen-play-rewards-bar-segment" id="home-screen-play-rewards-bar-segment6"></div>
                         <p id="home-screen-play-rewards-bar-next-text">Next rewards 5h 23m</p>
-                        <img src="assets/images/home-screen/icons/clock.png" id="home-screen-play-rewards-bar-next-icon">
+                        <img data-asset="assets/icons/general/clock.png" id="home-screen-play-rewards-bar-next-icon">
                     </div>
-                    <img src="assets/images/home-screen/dynamic/rewards/stardrop.png" id="home-screen-play-reward1">
-                    <img src="assets/images/home-screen/dynamic/rewards/stardrop.png" id="home-screen-play-reward2">
-                    <img src="assets/images/home-screen/dynamic/rewards/stardrop.png" id="home-screen-play-reward3">
-                    <img src="assets/images/home-screen/dynamic/rewards/stardrop.png" id="home-screen-play-reward4">
-                    <img src="assets/images/home-screen/dynamic/rewards/stardrop.png" id="home-screen-play-reward5">
-                    <img src="assets/images/home-screen/dynamic/rewards/stardrop.png" id="home-screen-play-reward6">
+                        <img data-asset="assets/icons/general/stardrop.png" id="home-screen-play-reward1">
+                        <img data-asset="assets/icons/general/stardrop.png" id="home-screen-play-reward2">
+                        <img data-asset="assets/icons/general/stardrop.png" id="home-screen-play-reward3">
+                        <img data-asset="assets/icons/general/stardrop.png" id="home-screen-play-reward4">
+                        <img data-asset="assets/icons/general/stardrop.png" id="home-screen-play-reward5">
+                        <img data-asset="assets/icons/general/stardrop.png" id="home-screen-play-reward6">
                     <div id="home-screen-play-button">
                         <h2 id="home-screen-play-button-text">Play</h2>
                     </div>
